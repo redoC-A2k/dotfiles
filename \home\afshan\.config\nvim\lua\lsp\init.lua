@@ -1,0 +1,1 @@
+/home/afshan/.config/nvim/lua/lsp/init.lua

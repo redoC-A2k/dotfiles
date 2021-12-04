@@ -78,3 +78,21 @@ xrandr --output DP-1 --brightness 0.6
 xrandr --output DP-1 --brightness 0.6
 xrandr --output DP-1 --brightness 0.7
 xrandr --output DP-1 --brightness 0.7
+ls
+mkdir undodir
+ls -a
+cd 
+cd dotfiles/
+ls
+ls
+ls -a
+echo "undodir" >> .gitignore
+git add .
+git status
+echo "workspace" >> .gitignore
+git add .
+git status
+git commit -m "added gitignore"
+git push origin master
+cat .gitignore 
+nano .gitignore 

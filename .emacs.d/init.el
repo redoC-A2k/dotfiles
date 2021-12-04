@@ -68,6 +68,15 @@
 (use-package counsel
   :ensure t)
 
+(use-package undo-tree
+  :ensure t
+  :init
+  (setq undo-tree-auto-save-history t)
+  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undodir/")))
+  :config
+  (global-undo-tree-mode)
+  )
+
 (use-package swiper
   :ensure t
   :config
@@ -114,19 +123,20 @@
   ;; To disable shortcut "jump" indicators for each section, set
   ;(setq dashboard-show-shortcuts nil)
   ; show contents on home page
-  (setq dashboard-items '((recents  . 5)
+  (setq dashboard-items '((recents . 10)
                           (bookmarks . 5)
                           (projects . 5)
                           (agenda . 5)
                           ))
-  )
+	)
+
 ;--------------LSP related------------;
 
 (use-package company
   :ensure t
   :config
   (global-company-mode t)
-  (setq company-idle-delay 0.0)
+  (setq company-idle-delay 0)
   :bind("M-SPC" . company-complete))
 
 (use-package company-quickhelp
@@ -143,16 +153,39 @@
 (use-package yasnippet-snippets
   :ensure t)
 
+;----gettign yasnippets to be shown in company popup 
+(defun mars/company-backend-with-yas (backends)
+      "Add :with company-yasnippet to company BACKENDS.
+Taken from https://github.com/syl20bnr/spacemacs/pull/179."
+      (if (and (listp backends) (memq 'company-yasnippet backends))
+	  backends
+	(append (if (consp backends)
+		    backends
+		  (list backends))
+		'(:with company-yasnippet))))
+
+    ;; add yasnippet to all backends
+    (setq company-backends
+          (mapcar #'mars/company-backend-with-yas company-backends))
+
+
+;---- keybinding change for yasnippet
+
+
 (use-package lsp-mode
   :ensure t
   :init
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c l")
-  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-         (prog-mode . lsp)
-         ;; if you want which-key integration
-         (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp)
+  :hook
+  (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+  (prog-mode . lsp)
+   ;; if you want which-key integration
+  (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp
+ ; :config
+;  (lsp-enable-snippet 1)
+)
 
 (use-package projectile
   :ensure t
@@ -198,8 +231,13 @@
   :ensure t
   :init
   (setq lsp-java-server-install-dir "/home/afshan/eclipse-jdt/")
-  :config
-  (add-hook 'java-mode-hook #'lsp))
+  :hook
+  ('java-mode-hook #'lsp)
+  ('java-mode-hook
+     '(lambda ()
+      (define-key java-mode-map "\C-m" 'newline-and-indent)))
+)
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -207,8 +245,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(yasnippet-snippets yasnippet pdf-tools lsp-java flycheck-pos-tip lsp-pyright dashboard flycheck-pos-top flycheck projectile company-mode ivy org-superstar which-key use-package try org-bullets))
- '(warning-suppress-log-types '((comp))))
+   '(undo-tree yasnippet-snippets yasnippet pdf-tools lsp-java flycheck-pos-tip lsp-pyright dashboard flycheck-pos-top flycheck projectile company-mode ivy org-superstar which-key use-package try org-bullets))
+ '(warning-suppress-log-types '((lsp-mode) (lsp-mode)))
+ '(warning-suppress-types '((lsp-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

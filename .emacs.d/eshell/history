@@ -73,3 +73,8 @@ xrandr --output DP-1 --brightness 0.5
 ps -aux 
 ps -aux | grep "emacs"
 ln -s --help
+xrandr --output DP-1 --brightness 0.5
+xrandr --output DP-1 --brightness 0.6
+xrandr --output DP-1 --brightness 0.6
+xrandr --output DP-1 --brightness 0.7
+xrandr --output DP-1 --brightness 0.7

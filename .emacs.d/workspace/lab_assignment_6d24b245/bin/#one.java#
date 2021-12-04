@@ -1,5 +1,0 @@
-class one {
-    int a = 10;
-    int b = 23;
-	int c = 25;
-}

@@ -1,6 +1,5 @@
-INDEX VERSION 1.131+/home/afshan/.emacs.d/workspace/.metadata/.plugins/org.eclipse.jdt.core
-298730250.index
-3276070577.index
-3842426239.index
+INDEX VERSION 1.131+/home/afshan/dotfiles/.emacs.d/workspace/.metadata/.plugins/org.eclipse.jdt.core
 1865797976.index
+3842426239.index
+3276070577.index
 4010541665.index

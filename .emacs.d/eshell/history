@@ -1,0 +1,75 @@
+xrandr --output DP-1 --brighntess 0.6
+xrandr --output DP-1 --brightess 0.6
+xrandr --output DP-1 --brightness 0.6
+xrandr --output DP-1 --brightness 0.4
+sudo pacman -S libwebkit2gtk-4.0
+sudo pacman -S libwebkit2gtk
+sudo pacman -S webkit2gtk
+sudo pacman -S webkit2gtk-4.0
+ls
+mkdir config
+ls
+mv config configs
+cd configs/
+ls
+ls
+xrandr --output DP-1 --brightness 0.4
+xrandr --output DP-1 --brightness 0.5
+sudo pacman -S archlinux-java
+cd
+git clone https://aur.archlinux.org/archlinux-java-run.git
+cd archlinux-java-run/
+makepkg -si
+archlinux-java --help
+archlinux-java status
+sudo pacman -S jdk8-openjdk 
+archlinux-java status
+sudo pacman -S jdk7-openjdk 
+sudo pacman -S jdk11-openjdk 
+ls
+cd ..
+rm -rarchlinux-java-run/
+rm -r archlinux-java-run/
+ls
+cd cuda-11.4.0/
+ls
+cd ..
+cd cuda-11.4/
+ls
+cd 
+cd cuda-11.4.2-1/
+ls
+cd ..
+cd cuda-11.4.0-1/
+ls
+clear
+clear
+xrandr --output DP-1 --brightness 0.5
+mkdir python_projects
+mv delme.py python_projects/
+cd python_projects/
+xrandr --output DP-1 --brightness 0.5
+ls
+rm compile_commands.json compile_commands.json\~ 
+rm trial 
+ls
+meson .
+meson build
+ls
+cd build/ls
+cd build/
+ls
+ninja
+ls
+trial_ex 
+./trial_ex 
+ninja -t compdb > compile_commands.json
+ls
+cat compile_commands.json 
+ls
+ninja
+./trial_ex 
+xrandr --output DP-1 --brightness 0.5
+ps -aux 
+ps -aux | grep "emacs"
+ln -s --help

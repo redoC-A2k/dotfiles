@@ -1,0 +1,13 @@
+#+STARTUP: content+#
+* General interface settings
+** Part1
+#+begin_src emacs-lisp
+  (+ 2 3)
+#+end_src
+
+#+RESULTS:
+: 5
+
+* Other settings
+** So what should I add next
+I am thinking 

@@ -1,5 +1,0 @@
-INDEX VERSION 1.131+/home/afshan/dotfiles/.emacs.d/workspace/.metadata/.plugins/org.eclipse.jdt.core
-1865797976.index
-3842426239.index
-3276070577.index
-4010541665.index

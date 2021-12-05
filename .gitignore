@@ -1,3 +1,7 @@
 /.emacs.d/cache
 /.emacs.d/undodir
 /.emacs.d/workspace
+/.emacs.d/backup
+/.emacs.d/auto-save-list
+/.emacs.d/eshell
+/.emacs.d/elpa

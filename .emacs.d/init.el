@@ -1,4 +1,11 @@
-;; (setq inhibit-startup-message t)
+;--------------------------------------------
+;;--- |‾‾‾ |\  /|   /\   /‾‾‾  |‾‾‾ ---------
+;;--- |--  | \/ |  /--\  ⅼ      \--| --------
+;;--- |___ |    | /    \ \___   __/ ---------
+;--------------------------------------------
+
+
+(setq inhibit-startup-message t)
 
 (scroll-bar-mode -1) ; Disable the visible scrollbar
 (tool-bar-mode -1) ;Disable the toolbar
@@ -10,18 +17,41 @@
 ;display relative line numbers
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (setq display-line-numbers-type 'relative)
+;change default tab size
+(setq default-tab-width 4)
 ;; Setup visible bell 
 ; (setq visible-bell t)
-
+;font settings
 (set-face-attribute 'default nil :font "Liberation Mono" :height 100)
-
+;setting path for vala language server
 (setq lsp-clients-vala-ls-executable "/usr/bin/vala-language-server")
-
 ;automatic parenthesis closing
 (electric-pair-mode t)
-
 ;enabling tabbar mode by default
 (tab-bar-mode 1)
+; setting up a backup directory
+;; Write backups to ~/.emacs.d/backup/
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
+      backup-by-copying      t  ; Don't de-link hard links
+      version-control        t  ; Use version numbers on backups
+      delete-old-versions    t  ; Automatically delete excess backups:
+      kept-new-versions      20 ; how many of the newest versions to keep
+      kept-old-versions      5) ; and how many of the old
+
+;------------------------------;
+;----------functions-----------;
+;------------------------------;
+
+(defun smart-open-line-above ()
+  "Insert an empty line above the current line.
+Position the cursor at it's beginning, according to the current mode."
+  (interactive)
+  (move-beginning-of-line nil)
+  (newline-and-indent)
+  (forward-line -1)
+  (indent-according-to-mode))
+
+(global-set-key [(control shift return)] 'smart-open-line-above)
 
 ;;;;;;;;;;MELPA SETUP;;;;;;;;;;;
 (require 'package)
@@ -148,6 +178,7 @@
   :ensure t
   :config
   (yas-global-mode 1)
+  (setq yas-prompt-functions '(yas-dropdown-prompt))
 )
 
 (use-package yasnippet-snippets
@@ -168,9 +199,16 @@ Taken from https://github.com/syl20bnr/spacemacs/pull/179."
     (setq company-backends
           (mapcar #'mars/company-backend-with-yas company-backends))
 
-
+ 
 ;---- keybinding change for yasnippet
+(define-key yas-minor-mode-map (kbd "<tab>") nil)
+(define-key yas-minor-mode-map (kbd "TAB") nil)
 
+;; Bind `SPC' to `yas-expand' when snippet expansion available (it
+;; will still call `self-insert-command' otherwise).
+(define-key yas-minor-mode-map (kbd "SPC") yas-maybe-expand)
+;; Bind `C-c y' to `yas-expand' ONLY.
+(define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
 
 (use-package lsp-mode
   :ensure t

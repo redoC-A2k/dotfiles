@@ -74,9 +74,11 @@ Position the cursor at it's beginning, according to the current mode."
   :config (which-key-mode))
 
 (use-package pdf-tools
+   :ensure t
    :config
    (pdf-tools-install)
    (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
+   (add-hook 'pdf-view-mode 'pdf-continuous-scroll-mode)
    :custom
    (pdf-annot-activate-created-annotations t "automatically annotate highlights"))
 
@@ -284,7 +286,7 @@ Taken from https://github.com/syl20bnr/spacemacs/pull/179."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    '(undo-tree yasnippet-snippets yasnippet pdf-tools lsp-java flycheck-pos-tip lsp-pyright dashboard flycheck-pos-top flycheck projectile company-mode ivy org-superstar which-key use-package try org-bullets))
- '(warning-suppress-log-types '((lsp-mode) (lsp-mode)))
+ '(warning-suppress-log-types '((comp) (lsp-mode)))
  '(warning-suppress-types '((lsp-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

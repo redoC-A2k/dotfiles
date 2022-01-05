@@ -1,1 +1,1 @@
-("~/dotfiles/")
+("~/git-customwidget/widgets-gtk/" "~/vala_projects/cairo_projects/cairo_backends/" "~/dotfiles/")

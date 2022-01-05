@@ -7,3 +7,5 @@
 /.emacs.d/elpa
 
 /.emacs.d/snippets
+/.emacs.d/eln-cache
+/.emacs.d/recentf

@@ -138,7 +138,8 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 
  -- Setup lspconfig.
  -- require('lspconfig')[%YOUR_LSP_SERVER%].setup {
- --   capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+ --   capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+ --   on_attach = on_attach
  -- }
 
 
@@ -215,3 +216,9 @@ require'lspconfig'.sumneko_lua.setup {
   on_attach=on_attach
 }
 
+  require'lspconfig'.lemminx.setup {
+    cmd = {"lemminx-linux"},
+    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    filetypes = { "xml", "xsd", "xsl", "xslt", "svg" },
+    on_attach = on_attach
+  }

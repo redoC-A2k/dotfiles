@@ -162,10 +162,8 @@ Position the cursor at it's beginning, according to the current mode."
                           ))
   )
 
-(use-package neotree
-  :ensure t
-  :config
-  (global-set-key [f8] 'neotree-toggle))
+(use-package neotnree
+  :ensure t)
 
 ;--------------LSP related------------;
 

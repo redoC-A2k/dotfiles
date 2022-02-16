@@ -171,10 +171,10 @@ require('lspconfig').vala_ls.setup{
 }
 
 
-require'lspconfig'.jdtls.setup{
-  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-  on_attach=on_attach
-}
+  require'lspconfig'.jdtls.setup{
+    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    on_attach=on_attach
+ }
 
 -- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
 USER = vim.fn.expand('$USER')
@@ -187,7 +187,8 @@ if vim.fn.has("mac") == 1 then
     sumneko_binary = "/Users/" .. USER .. "/.config/nvim/lua-language-server/bin/macOS/lua-language-server"
 elseif vim.fn.has("unix") == 1 then
     sumneko_root_path = "/home/" .. USER .. "/lua-language-server"
-    sumneko_binary = "/home/" .. USER .. "/lua-language-server/bin/Linux/lua-language-server"
+    -- sumneko_binary = "/home/" .. USER .. "/lua-language-server/bin/Linux/lua-language-server"
+    sumneko_binary = "lua-language-server"
 else
     print("Unsupported system for sumneko")
 end

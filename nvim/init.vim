@@ -138,14 +138,14 @@ nnoremap <C-f> :NERDTreeFind<CR>
 lua require("lsp")
 
 """"""""for nvim-jdtls """"""""""""
-if has('nvim-0.5')
-  "packadd nvim-jdtls
-  lua jdtls = require('jdtls')
-  augroup lsp
-    au!
-    au FileType java lua jdtls.start_or_attach({cmd={'launch_jdtls.sh'}})
-  augroup end
-endif
+" if has('nvim-0.5')
+  " "packadd nvim-jdtls
+  " lua jdtls = require('jdtls')
+  " augroup lsp
+    " au!
+    " au FileType java lua jdtls.start_or_attach({cmd={'launch_jdtls.sh'}})
+  " augroup end
+" endif
 
 """"""python2 and python3 configuration"""""
 let g:python_host_prog = '/usr/local/bin/python'

@@ -1,1 +1,1 @@
-("~/vala_oss/gnome-clocks/" "~/dotfiles/" "~/git-customwidget/widgets-gtk/" "~/vala_projects/cairo_projects/cairo_backends/")
+("~/dotfiles/" "~/vala_oss/gnome-clocks/" "~/git-customwidget/widgets-gtk/" "~/vala_projects/cairo_projects/cairo_backends/")

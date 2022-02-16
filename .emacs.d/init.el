@@ -75,10 +75,11 @@ Position the cursor at it's beginning, according to the current mode."
 
 (use-package pdf-tools
    :ensure t
+   :init
+   (add-hook 'pdf-view-mode 'pdf-continuous-scroll-mode)
    :config
    (pdf-tools-install)
    (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
-   (add-hook 'pdf-view-mode 'pdf-continuous-scroll-mode)
    :custom
    (pdf-annot-activate-created-annotations t "automatically annotate highlights"))
 

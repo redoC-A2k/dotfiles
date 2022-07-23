@@ -192,6 +192,10 @@ Position the cursor at it's beginning, according to the current mode."
 (use-package yasnippet-snippets
   :ensure t)
 
+;(require 'po-mode)
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/")
+(autoload "po-mode" "po-mode")
+
 ;----gettign yasnippets to be shown in company popup 
 (defun mars/company-backend-with-yas (backends)
       "Add :with company-yasnippet to company BACKENDS.

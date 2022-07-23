@@ -1,0 +1,1 @@
+(require 'po-mode)

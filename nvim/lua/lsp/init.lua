@@ -34,6 +34,31 @@
 
 end
 
+-- Setting up indent-blankline
+  vim.opt.termguicolors = true
+  vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]]
+  vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine]]
+  vim.cmd [[highlight IndentBlanklineIndent3 guifg=#98C379 gui=nocombine]]
+  vim.cmd [[highlight IndentBlanklineIndent4 guifg=#56B6C2 gui=nocombine]]
+  vim.cmd [[highlight IndentBlanklineIndent5 guifg=#61AFEF gui=nocombine]]
+  vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine]]
+
+  vim.opt.list = true
+  vim.opt.listchars:append("space: ")
+  vim.opt.listchars:append("eol:↴")
+
+  require("indent_blankline").setup {
+      space_char_blankline = " ",
+      char_list_blankline = {'|', '¦', '┆', '┊','▏'},
+      char_highlight_list = {
+          "IndentBlanklineIndent1",
+          "IndentBlanklineIndent2",
+          "IndentBlanklineIndent3",
+          "IndentBlanklineIndent4",
+          "IndentBlanklineIndent5",
+          "IndentBlanklineIndent6",
+      },
+  }
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 --[[ local servers = { 'pyright', 'rust_analyzer', 'tsserver' }
@@ -162,19 +187,20 @@ require'lspconfig'.bashls.setup{
   on_attach=on_attach
 }
 
+--Setup vala language server
 require('lspconfig').vala_ls.setup{
-  -- capabilities=capabilities
   cmd = { "vala-language-server" },
   filetypes = { "vala", "genie" },
   capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
   on_attach=on_attach
 }
 
-
-  require'lspconfig'.jdtls.setup{
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    on_attach=on_attach
- }
+--Setup java eclipse jdtls server
+require'lspconfig'.jdtls.setup{
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  cmd = {"launch_jdtls.sh"},
+  on_attach=on_attach
+}
 
 -- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
 USER = vim.fn.expand('$USER')
@@ -217,9 +243,25 @@ require'lspconfig'.sumneko_lua.setup {
   on_attach=on_attach
 }
 
-  require'lspconfig'.lemminx.setup {
-    cmd = {"lemminx-linux"},
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    filetypes = { "xml", "xsd", "xsl", "xslt", "svg" },
-    on_attach = on_attach
-  }
+-- Setup xml server
+require'lspconfig'.lemminx.setup {
+  cmd = {"lemminx-linux"},
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  filetypes = { "xml", "xsd", "xsl", "xslt", "svg" },
+  on_attach = on_attach
+}
+
+-- Setup rust server
+require('lspconfig').rust_analyzer.setup {
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  on_attach = on_attach
+}
+
+--Setup php server
+require('lspconfig').phpactor.setup{
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  on_attach = on_attach
+}
+
+--Setup flow server for javascript
+require'lspconfig'.flow.setup{}

@@ -29,6 +29,7 @@ set autoindent
 set smartindent
 set completeopt=menu,menuone,noselect
 
+
 """""""""""""""""""""PATHS"""""""""""""""""""""
 set path+=~/College/SEM-4/**
 set path+=~/College/SEM-5/**
@@ -44,25 +45,25 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
-Plug 'dylanaraps/wal.vim'
 Plug 'arrufat/vala.vim'
 Plug 'mfussenegger/nvim-jdtls'
 Plug 'preservim/nerdtree'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'ryanoasis/vim-devicons'
+Plug 'dylanaraps/wal.vim'
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
-""""""""""""wal colorscheme"""""""""
-colorscheme wal
 """""""""""""""Vundle"""""""""""""""""""""
 set nocompatible
 filetype off
 set rtp+=~/.local/share/nvim/bundle/Vundle.vim
 call vundle#begin('~/.local/share/nvim/bundle/')
 
+Plugin 'morhetz/gruvbox'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Yggdroot/indentLine'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-unimpaired'
 
@@ -71,13 +72,21 @@ Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 
+Plugin 'itchyny/lightline.vim'
+Plugin 'junegunn/limelight.vim'
+
 call vundle#end()
 filetype plugin indent on
 
+""""""""""""""colorscheme"""""""""""""
+set background=dark
+colorscheme gruvbox
+" colorscheme wal
+
 """"""""""""indentLine""""""""""""
 " let g:indentLine_char = '┊'
-let g:indentLine_char_list = ['▏', '┆', '┊']
-let g:indentLine_color_term = 250
+" let g:indentLine_char_list = ['▏', '┆', '┊']
+" let g:indentLine_color_term = 250
 
 """""""""""" colorizer """"""""""""""""
 :let g:colorizer_auto_filetype='sass,scss,css,html'
@@ -132,7 +141,19 @@ nnoremap tj :tabprevious <CR>
 """""Nerdtree""""
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-e> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+"enable line numbers
+let NERDTreeShowLineNumbers=1
+"make sure relative line numbers are used
+autocmd FileType nerdtree setlocal relativenumber
+
+
+"""""""FZF""""""""
+
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>f :FZF<CR>
+nnoremap <leader>a :Ag<CR>
+nnoremap <leader>r :Rg<CR>
+nnoremap <leader>m :Marks<CR>
 
 """""""""""""Load init.lua"""""""""""""
 lua require("lsp")
@@ -150,8 +171,19 @@ lua require("lsp")
 """"""python2 and python3 configuration"""""
 let g:python_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
+
 """""""Nerdtree""""""
 " Start NERDTree when Vim is started without file arguments.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 
+"""""""""""set color of vertical split window""""""
+set fillchars=vert:\ ,fold:-,diff:-
+highlight VertSplit ctermbg=9 ctermfg=0
+"""""""lightline""""""
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+        \ 'left': [['mode','paste'],['readonly','absolutepath','modified']]
+        \ },
+      \}

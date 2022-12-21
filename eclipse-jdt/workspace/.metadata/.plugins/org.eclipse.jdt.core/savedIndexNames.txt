@@ -1,5 +1,0 @@
-INDEX VERSION 1.131+/home/afshan/eclipse-jdt/workspace/.metadata/.plugins/org.eclipse.jdt.core
-3202525084.index
-3842426239.index
-1865797976.index
-4010541665.index

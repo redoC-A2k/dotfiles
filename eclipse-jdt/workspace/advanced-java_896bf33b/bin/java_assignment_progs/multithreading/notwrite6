@@ -1,0 +1,36 @@
+class Display{
+	public void wish(String name,Thread t ){
+		for(int  i=0 ; i< 10 ;i++){
+			System.out.print("Good Morning ");
+			try{
+				Thread.sleep(1000);
+			}catch(InterruptedException e){}
+			System.out.println(t.getName()+" "+name);
+		}
+	}
+}
+
+class MyThread extends Thread{
+	Display d;
+	String name;
+	MyThread(Display d, String name){
+		this.d =d;
+		this.name = name; 
+    Thread.currentThread().setName(name + " thread");
+	}
+
+	public void run(){
+		d.wish(name,Thread.currentThread());
+	}
+}
+
+public class nowrite6{
+  public static void main(String[] args) throws InterruptedException{
+  	Display d  =  new  Display();
+  	MyThread  t1 =  new  MyThread(d, "Himanshu");
+  	MyThread  t2 =  new  MyThread(d, "Jyoti");
+  	t1.start();
+  	t2.start();
+  }
+}
+

@@ -264,4 +264,14 @@ require('lspconfig').phpactor.setup{
 }
 
 --Setup flow server for javascript
-require'lspconfig'.flow.setup{}
+require'lspconfig'.flow.setup{
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  on_attach = on_attach
+}
+
+
+--Setup php server
+require('lspconfig').gopls.setup{
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  on_attach = on_attach
+}

@@ -149,7 +149,7 @@ autocmd FileType nerdtree setlocal relativenumber
 
 """""""FZF""""""""
 
-nnoremap <leader>b :Buffers<CR>
+nnoremap <Leader>b :Buffers<CR>
 nnoremap <leader>f :FZF<CR>
 nnoremap <leader>a :Ag<CR>
 nnoremap <leader>r :Rg<CR>

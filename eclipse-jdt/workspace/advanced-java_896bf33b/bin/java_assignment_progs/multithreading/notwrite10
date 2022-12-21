@@ -1,0 +1,24 @@
+import java.lang.*;
+
+public class prog12 {
+public static void main(String args[]) throws InterruptedException{
+// creating threadgroup object
+ThreadGroup grp = new ThreadGroup(“mythrdgrp”);
+// creating threads belonging to given thread group
+myThread one = new myThread(“mythrdgrp”, grp);
+// creating first member of thread group
+myThread two =new myThread(“mythrdgrp”, grp);
+// creating second member of thread group
+}
+}
+
+class myThread extends Thread {
+  myThread(String threadName, ThreadGroup grp) {
+    super(threadName, grp); // call to parent class constructor
+    start(); // start the thread
+  }
+
+  public void run() {
+    // implement required logic
+  }
+}

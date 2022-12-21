@@ -1,0 +1,52 @@
+class BankAccount {
+  private int balance = 100;
+
+  public int checkBalance() {
+    return this.balance;
+  }
+
+  public void withdrawal(int amount) {
+    this.balance = this.balance - amount;
+  }
+}
+
+class RyanAndMonicaAccount implements Runnable {
+  private BankAccount account = new BankAccount();
+
+  public void run() {
+    for (int x = 0; x < 8; x++) {
+      makeWithdrawal(10);
+      if (account.checkBalance() < 0) {
+        System.out.println("Money overdrawn");
+      }
+    }
+  }
+
+  private void makeWithdrawal(int amount) {
+    if (account.checkBalance() >= amount) {
+      try {
+        synchronized (this) {
+          System.out.println(Thread.currentThread().getName() + " Going to sleep");
+          Thread.sleep(500);
+          account.withdrawal(amount);
+          System.out.println(Thread.currentThread().getName() + " has done withdrawal");
+        }
+      } catch (Exception e) {
+      }
+    } else {
+      System.out.println("Sorry not enough balance for " + Thread.currentThread().getName());
+    }
+  }
+}
+
+public class prog9 {
+  public static void main(String[] args) {
+    RyanAndMonicaAccount RAndMaccount = new RyanAndMonicaAccount();
+    Thread one = new Thread(RAndMaccount);
+    Thread two = new Thread(RAndMaccount);
+    one.setName("Ryan");
+    two.setName("Monica");
+    one.start();
+    two.start();
+  }
+}

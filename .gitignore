@@ -10,3 +10,5 @@
 /.emacs.d/eln-cache
 /.emacs.d/recentf
 /.emacs.d/quelpa
+
+eclipse-jdt

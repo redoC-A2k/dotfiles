@@ -25,11 +25,6 @@ set mouse=a
 "add intent in new line
 set autoindent
 set smartindent
-"powerline
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
-"powerline ends here
 
 """""""""""""""""""""PATHS"""""""""""""""""""""
 set path+=~/College/SEM-4/**
@@ -300,7 +295,7 @@ autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 """""""""""""pywal plugin for vim from dylanaraps"""""""""""""
-colorscheme wal
+" colorscheme wal
 
 """""""""""""" render italics """"""""""""""
 highlight Comment cterm=italic

@@ -9,7 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/themes
 # some liked themes = ["jonathan", "robbyrussell", "bira" , "muse" , "jaischeema"]
-ZSH_THEME="random"
+ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -117,9 +117,6 @@ alias rm=rm -i
 alias vim=nvim
 alias luamake=/home/afshan/lua-language-server/3rd/luamake/luamake
 
-
-#--- evals ----
-eval $(thefuck --alias)
 
 source ~/.profile
 

@@ -69,19 +69,19 @@ Position the cursor at it's beginning, according to the current mode."
 (use-package try
   :ensure t)
 
-(use-package which-key
-  :ensure t
-  :config (which-key-mode))
+;(use-package which-key
+;  :ensure t
+;  :config (which-key-mode))
 
-(use-package pdf-tools
-   :ensure t
-   :init
-   (add-hook 'pdf-view-mode 'pdf-continuous-scroll-mode)
-   :config
-   (pdf-tools-install)
-   (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
-   :custom
-   (pdf-annot-activate-created-annotations t "automatically annotate highlights"))
+;(use-package pdf-tools
+;   :ensure t
+;   :init
+;   (add-hook 'pdf-view-mode 'pdf-continuous-scroll-mode)
+;   :config
+;   (pdf-tools-install)
+;   (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
+;   :custom
+;   (pdf-annot-activate-created-annotations t "automatically annotate highlights"))
 
 (use-package org-superstar
   :ensure t
@@ -182,45 +182,45 @@ Position the cursor at it's beginning, according to the current mode."
   :config
   (company-quickhelp-mode))
 
-(use-package yasnippet
-  :ensure t
-  :config
-  (yas-global-mode 1)
-  (setq yas-prompt-functions '(yas-dropdown-prompt))
-)
+;(use-package yasnippet
+;  :ensure t
+;  :config
+;  (yas-global-mode 1)
+;  (setq yas-prompt-functions '(yas-dropdown-prompt))
+;)
 
-(use-package yasnippet-snippets
-  :ensure t)
+;(use-package yasnippet-snippets
+;  :ensure t)
 
 ;(require 'po-mode)
-(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/")
-(autoload "po-mode" "po-mode")
+;(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/")
+;(autoload "po-mode" "po-mode")
 
 ;----gettign yasnippets to be shown in company popup 
-(defun mars/company-backend-with-yas (backends)
-      "Add :with company-yasnippet to company BACKENDS.
-Taken from https://github.com/syl20bnr/spacemacs/pull/179."
-      (if (and (listp backends) (memq 'company-yasnippet backends))
-	  backends
-	(append (if (consp backends)
-		    backends
-		  (list backends))
-		'(:with company-yasnippet))))
-
-    ;; add yasnippet to all backends
-    (setq company-backends
-          (mapcar #'mars/company-backend-with-yas company-backends))
+;(defun mars/company-backend-with-yas (backends)
+;      "Add :with company-yasnippet to company BACKENDS.
+;Taken from https://github.com/syl20bnr/spacemacs/pull/179."
+;      (if (and (listp backends) (memq 'company-yasnippet backends))
+;	  backends
+;	(append (if (consp backends)
+;		    backends
+;		  (list backends))
+;		'(:with company-yasnippet))))
+;
+;    ;; add yasnippet to all backends
+;    (setq company-backends
+;          (mapcar #'mars/company-backend-with-yas company-backends))
 
  
 ;---- keybinding change for yasnippet
-(define-key yas-minor-mode-map (kbd "<tab>") nil)
-(define-key yas-minor-mode-map (kbd "TAB") nil)
+;(define-key yas-minor-mode-map (kbd "<tab>") nil)
+;(define-key yas-minor-mode-map (kbd "TAB") nil)
 
 ;; Bind `SPC' to `yas-expand' when snippet expansion available (it
 ;; will still call `self-insert-command' otherwise).
-(define-key yas-minor-mode-map (kbd "SPC") yas-maybe-expand)
+;(define-key yas-minor-mode-map (kbd "SPC") yas-maybe-expand)
 ;; Bind `C-c y' to `yas-expand' ONLY.
-(define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
+;(define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
 
 (use-package lsp-mode
   :ensure t
@@ -272,38 +272,38 @@ Taken from https://github.com/syl20bnr/spacemacs/pull/179."
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
 ;-------------- LSP-Servers ---------------;
-(use-package lsp-pyright
-  :ensure t
-  :hook (python-mode . (lambda ()
-			 (require 'lsp-pyright)
-                          (lsp))))  ; or lsp-deferred
-(use-package lsp-java
-  :ensure t
-  :init
-  (setq lsp-java-server-install-dir "/home/afshan/eclipse-jdt/")
-  :hook
-  ('java-mode-hook #'lsp)
-  ('java-mode-hook
-     '(lambda ()
-      (define-key java-mode-map "\C-m" 'newline-and-indent)))
-)
+;(use-package lsp-pyright
+;  :ensure t
+;  :hook (python-mode . (lambda ()
+;			 (require 'lsp-pyright)
+;                          (lsp))))  ; or lsp-deferred
+;(use-package lsp-java
+;  :ensure t
+;  :init
+;  (setq lsp-java-server-install-dir "/home/afshan/eclipse-jdt/")
+;  :hook
+;  ('java-mode-hook #'lsp)
+;  ('java-mode-hook
+;     '(lambda ()
+;      (define-key java-mode-map "\C-m" 'newline-and-indent)))
+;)
 
 
-(custom-set-variables
+;(custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(undo-tree yasnippet-snippets yasnippet pdf-tools lsp-java flycheck-pos-tip lsp-pyright dashboard flycheck-pos-top flycheck projectile company-mode ivy org-superstar which-key use-package try org-bullets))
- '(warning-suppress-log-types '((comp) (lsp-mode)))
- '(warning-suppress-types '((lsp-mode))))
-(custom-set-faces
+; '(package-selected-packages
+;   '(undo-tree yasnippet-snippets yasnippet pdf-tools lsp-java flycheck-pos-tip lsp-pyright dashboard flycheck-pos-top flycheck projectile company-mode ivy org-superstar which-key use-package try org-bullets))
+; '(warning-suppress-log-types '((comp) (lsp-mode)))
+; '(warning-suppress-types '((lsp-mode))))
+;(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))
+; '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))
 
 ;------------------------#MY-STUFF#------------------------;
 ;(setq indo-enable-flex-matching t) ;sets little more flexible pattern matching for buffer

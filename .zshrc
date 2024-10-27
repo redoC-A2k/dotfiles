@@ -116,6 +116,7 @@ unsetopt beep
 alias rm=rm -i
 alias vim=nvim
 alias luamake=/home/afshan/lua-language-server/3rd/luamake/luamake
+alias cat=bat
 
 
 source ~/.profile
